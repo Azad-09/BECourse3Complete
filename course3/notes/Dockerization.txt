@@ -1,0 +1,41 @@
+sudo dsudo USing Docker with Spring boot Application.
+------------------------------------------------
+Steps.
+1.create a file named Dockerfile in root
+2.add commands---
+---------------------------------------------------
+FROM openjdk
+WORKDIR usr/lib
+ENV MONGO_DATABASE=Sprint4
+ENV MONGO_URL=mongodb://localhost:27017/Sprint4
+ADD ./target/<name>.jar /usr/lib/<name>.jar
+ENTRYPOINT ["java","-jar","<name>.jar"]
+-------------------------------------------------
+3. Push the application to git.
+4. Open vlabs then on VM open git.
+5. command for building docker --
+-----------------------------------------------
+ to run mongo
+
+ sudo docker build -t myfirstcontainer .
+ sudo docker pull mongo
+ sudo docker ps
+ sudo docker run mongo
+---------------------------------------------
+after running your project--
+
+sudo docker build -t springcontainerimage .
+sudo docker run myconatiner:latest ----NO
+docker run --name spring-app --network=host springcontainerimage:latest
+----------------------------------------------
+new terminal  
+
+sudo docker kill $(docker ps -q)
+sudo docker ps  // ps= process state
+sudo docker rm $(sudo docker ps -a -q)   // rm = remove
+
+sudo docker run -d -p 27018:27017 --name mongocontainer1 mongo:latest
+sudo docker ps
+sudo docker run mycontainer:latest---- NO
+---------------------------------------------------------
+6. check on postman tool 
